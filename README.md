@@ -198,7 +198,7 @@ This endpoint is used for update user profile.
 
   ```
 
-  ### 5. **Fetch all post via userid** (`GET /api/v1/post/get-posts/:user_id`)
+### 5. **Fetch all post via userid** (`GET /api/v1/post/get-posts/:user_id`)
 
 This endpoint is used for fetch all the posts that user posts.
 #### ⚙️ Request Format:
@@ -222,6 +222,9 @@ This endpoint is used for fetch all the posts that user posts.
     "success": true,
     "data": null
   }
+
+  ```
+
 
 
 
