@@ -93,8 +93,8 @@ This endpoint is used for fetch user profile info and all the posts in database.
                     "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187182/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187181819.jpg",
                     "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187184/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187183623.jpg"
                 ],
-                "user_name": {
-                    "user_name": "dumi"
+                "author_name": {
+                    "author_name": "dumi"
                 }
             },
             {
@@ -109,7 +109,7 @@ This endpoint is used for fetch user profile info and all the posts in database.
                     "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187329/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187328861.jpg",
                     "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187330/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187330242.jpg"
                 ],
-                "user_name": {
+                "author_name": {
                     "user_name": "shay"
                 }
             }

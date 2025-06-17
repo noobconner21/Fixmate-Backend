@@ -20,7 +20,7 @@ export const get_all_posts = async (user_id,next) => {
         post_react, 
         post_author_id, 
         post_images, 
-        user_name:users!posts_post_author_id_fkey(user_name)
+        author_name:users!posts_post_author_id_fkey(user_name)
       `)
         if (DataFetchError) {
             console.log(DataFetchError);
