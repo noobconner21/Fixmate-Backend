@@ -108,6 +108,49 @@ This endpoint is used for fetch user profile info and all the posts in database.
 
   ```
 
+  ### 2. **Update user profile** (`PUT /api/v1/user/update-profile`)
+
+This endpoint is used for update user profile.
+#### ⚙️ Request Format:
+- **Method**: `PUT`
+- **Endpoint**: `/api/v1/user/update-profile`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+  
+  - **Required Fields**:
+  ```json
+  {
+    "image": `form-field>`,  // Form field
+    "user_id": "FE4oxPgWwio<u%E", // Firebase user ID (Valid ID)
+    "name": "yourname"  // Updated name
+  }
+  ```
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "Profile updated!!",
+    "success": true,
+    "data": {
+        "user_id": "12340",
+        "user_name": "dumidu lakshan",
+        "user_email": "dumidgmail.com",
+        "created_at": "2025-06-17T07:06:22.574546",
+        "profile_pic": "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750163720/profilepic/profilepic/12340/1750163718067.jpg"
+    }
+  }
+
+  ```
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "Name field required"
+  }
+
+  ```
+
 
 
 
