@@ -218,8 +218,9 @@ This endpoint is used for fetch all the posts that user posts.
 - **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
   ```json
   {
-    "success": false,
-    "message": "User cannot find"
+    "message": "Cannot find posts related to this user",
+    "success": true,
+    "data": null
   }
 
 
