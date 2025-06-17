@@ -10,9 +10,18 @@ import { SendResponse } from "../responses/SuccussResponse.mjs";
 
 
 //Feed for all users
-export const get_all_posts = async (next) => {
+export const get_all_posts = async (user_id,next) => {
     try {
-        const {data:Posts , error:DataFetchError} = await superbase.from("posts").select("*");
+        const {data:Posts , error:DataFetchError} = await superbase.from("posts").select(`
+        post_id, 
+        post_title, 
+        post_description, 
+        post_comment_count, 
+        post_react, 
+        post_author_id, 
+        post_images, 
+        user_name:users!posts_post_author_id_fkey(user_name)
+      `)
         if (DataFetchError) {
             console.log(DataFetchError);
         }
@@ -21,6 +30,8 @@ export const get_all_posts = async (next) => {
         console.log(error);
     }
 }
+
+
 
 
 //Create post

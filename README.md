@@ -74,24 +74,44 @@ This endpoint is used for fetch user profile info and all the posts in database.
     "success": true,
     "data": {
         "user": {
-            "user_id": "12d3sss4ss0sasdsasdsds",
-            "user_name": "lasssskshan",
-            "user_email": "dumiddsgsmssssasdsadssdddail.com",
-            "created_at": "2025-06-17T07:50:56.424558",
+            "user_id": "O1JNcBcCamWypk8J5vdjGUQUYti2",
+            "user_name": "shay",
+            "user_email": "shay@gmail.com",
+            "created_at": "2025-06-17T19:08:04.736236",
             "profile_pic": ""
         },
         "posts": [
             {
-                "post_id": "82f9a28a-f49a-4b1e-ba4b-f93790a4d4e7",
-                "created_at": "2025-06-17T10:13:53.41209+00:00",
-                "post_title": "Ram not working",
-                "post_description": "ram is my not working",
+                "post_id": "a89506ed-2012-4d48-bee9-5cdd9ff00f7a",
+                "post_title": "Ram not",
+                "post_description": "Ram not",
                 "post_comment_count": 0,
                 "post_react": 0,
-                "post_author_id": "12d3sss4ss0sasdsasdsds",
+                "post_author_id": "4xEmXvn4GHdWvZEosx6NoTkz2F12",
                 "post_images": [
-                    "https://readme.so/editor"
-                ]
+                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187180/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187178033.jpg",
+                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187182/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187181819.jpg",
+                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187184/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187183623.jpg"
+                ],
+                "user_name": {
+                    "user_name": "dumi"
+                }
+            },
+            {
+                "post_id": "1cbee2c9-96a3-4618-8cb2-54c56f19df06",
+                "post_title": "wwwwww",
+                "post_description": "Ram notkjghgh",
+                "post_comment_count": 21,
+                "post_react": 256,
+                "post_author_id": "O1JNcBcCamWypk8J5vdjGUQUYti2",
+                "post_images": [
+                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187327/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187325381.jpg",
+                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187329/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187328861.jpg",
+                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187330/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187330242.jpg"
+                ],
+                "user_name": {
+                    "user_name": "shay"
+                }
             }
         ]
     }
