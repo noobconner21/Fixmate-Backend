@@ -42,15 +42,14 @@ export const create_post_service = async (images,folder,user_id,title,descriptio
         }
 
     const {data:CreatedPost,error:CreatePostError} = await superbase.from("posts").insert({"post_title":title,"post_description":description,"post_author_id":user_id,"post_images":imageUrls}).select("*").single()
-    console.log(CreatedPost);
-    if (CreatePostError) {
-        console.log(CreatePostError);
-        
+    if (!CreatedPost) {
+        return next(system_error("Something went wrong went createing post!!",StatusCodes.INTERNAL_SERVER_ERROR))
     }
-    
-       
-        
-        
+    if (CreatePostError) {
+        return next(system_error(CreatePostError.details,StatusCodes.INTERNAL_SERVER_ERROR))
+    }
+
+    return CreatedPost
     } catch (error) {
         return next(new system_error(error.message,StatusCodes.INTERNAL_SERVER_ERROR))
     }

@@ -108,7 +108,7 @@ This endpoint is used for fetch user profile info and all the posts in database.
 
   ```
 
-### 2. **Update user profile** (`PUT /api/v1/user/update-profile`)
+### 3. **Update user profile** (`PUT /api/v1/user/update-profile`)
 
 This endpoint is used for update user profile.
 #### ⚙️ Request Format:
@@ -150,6 +150,54 @@ This endpoint is used for update user profile.
   }
 
   ```
+
+### 4. **Create new post** (`POST /api/v1/post/create`)
+
+This endpoint is used for update user profile.
+#### ⚙️ Request Format:
+- **Method**: `POST`
+- **Endpoint**: `/api/v1/post/create`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+  
+  - **Required Fields**:
+  ```json
+  {
+    "images": `<form-field>`,  // Form field | max 3 images
+    "user_id": "FE4oxPgWwio<u%E", // Firebase user ID (Valid ID)
+    "title": "Blue screen issue windows 10",  // Post title
+    "description": "A Blue Screen of Death (BSOD) in Windows indicates a critical error that the system cannot recover from, causing the computer to restart abruptly to prevent data loss or hardware damage",  // Post Description
+  }
+  ```
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "Post creasted!!",
+    "success": true,
+    "data": {
+        "post_id": "4de78e69-819a-4a71-b960-33154ca52671",
+        "created_at": "2025-06-17T15:34:17.572971+00:00",
+        "post_title": "sdsad",
+        "post_description": "asdsad",
+        "post_comment_count": 0,
+        "post_react": 0,
+        "post_author_id": "12340",
+        "post_images": []
+    }
+  }
+
+  ```
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "All fields are required"
+  }
+
+  ```
+
 
 
 
