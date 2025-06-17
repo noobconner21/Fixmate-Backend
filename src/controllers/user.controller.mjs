@@ -7,11 +7,14 @@ import { SendResponse } from "../responses/SuccussResponse.mjs";
 export const user_register_controller = async (req, res, next) => {
     try {
         const { user_id, name, email } = req.body;
+        console.log(user_id);
+        
         const user = await user_register_service(user_id, name, email, next);
         if (user) {
             // Send success response after successful registration
             return res.status(StatusCodes.CREATED).json({
             message: "User registered successfully",
+            "success": true,
             user: user
         });
         }
