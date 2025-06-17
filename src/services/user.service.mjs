@@ -60,7 +60,7 @@ export const update_profile_service = async (user_id,name,fileArray,next) => {
         const imageUrls = []
         for(const file of fileArray){
             const imagePath = file.path
-            const image_url = await upload_profile_pic(imagePath,user_id)
+            const image_url = await upload_profile_pic(imagePath,user_id,"profilepic")
             imageUrls.push(image_url)
         }
         console.log(user_id);

@@ -10,13 +10,13 @@ cloudinary.config({
     
 });
 
-export const upload_profile_pic = async (imagePath,user_id) => {
+export const upload_profile_pic = async (imagePath,user_id,folder) => {
     const options = {
       use_filename: true,
       unique_filename: true,
       overwrite: true,
-      folder:"profilepic",
-      public_id: `profilepic/${user_id}/${Date.now()}`,
+      folder:`${folder}`,
+      public_id: `${folder}/${user_id}/${Date.now()}`,
     };
 
     try {
