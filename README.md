@@ -1,8 +1,8 @@
 
-# 🌟 Ifixpro Backend API 🌟
+# 🌟 Fixmate Backend API 🌟
 ## 📜 Overview
 
-Welcome to the **Ifixpro Backend API** for the **Ifixpro** mobile app. This API is built using **Express** and **Supabase** as the database service. 🚀
+Welcome to the **Fixmate Backend API** for the **Fixmate** mobile app. This API is built using **Express** and **Supabase** as the database service. 🚀
 
 🔑 **Important**: All routes require a valid `x-api-key` in the request header for authentication.  
 
