@@ -1,8 +1,10 @@
 import { StatusCodes } from "http-status-codes"
 import { user_error } from "../responses/ErrorResponse.mjs";
-import { create_post_service } from "../services/post.service.mjs";
+import { create_post_service,get_posts_service } from "../services/post.service.mjs";
 import { SendResponse } from "../responses/SuccussResponse.mjs";
 
+
+//create post
 export const create_post = async (req,res,next) => {
     try {
         const {user_id,title,description} = req.body
@@ -22,3 +24,22 @@ export const create_post = async (req,res,next) => {
         return next(error.message,StatusCodes.INTERNAL_SERVER_ERROR)
     }
 }
+
+
+// Get posts via specific admin id
+export const get_posts_via_admin_id = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const posts = await get_posts_service(id, next); 
+
+        if (!posts) {
+            return SendResponse("Cannot find posts related to this user", StatusCodes.NOT_FOUND, null, res);
+        }
+
+        return SendResponse("Post fetched", StatusCodes.OK, posts, res); 
+
+    } catch (error) {
+        console.error(error);
+        return next(error); 
+    }
+};

@@ -5,6 +5,8 @@ import superbase from "../database/connect.mjs";
 import { system_error, user_error } from "../responses/ErrorResponse.mjs";
 import { upload_profile_pic } from "../utils/cloudinary.mjs";
 
+import { SendResponse } from "../responses/SuccussResponse.mjs";
+
 
 
 //Feed for all users
@@ -55,3 +57,32 @@ export const create_post_service = async (images,folder,user_id,title,descriptio
     }
     
 }
+
+
+//Get posts via admin id
+// Get posts via admin id
+export const get_posts_service = async (admin_id, next) => {
+    try {
+        const {data: existsUser, error: userExistsError} = await superbase.from("users").select("user_id").eq("user_id", admin_id).single();
+        if (!existsUser) {
+            // Return null instead of calling next to prevent halting execution
+            return null; 
+        }
+
+        if (userExistsError) {
+            console.log(userExistsError.details);  // Log for debugging
+            return null;  // Return null to prevent crashing the app
+        }
+
+        const {data: posts, error: postError} = await superbase.from("posts").select("*").eq("post_author_id", admin_id);
+        if (postError) {
+            console.log(postError);  // Log for debugging
+            return null;  // Return null if there is an error fetching posts
+        }
+
+        return posts;  // Return the posts if no errors
+    } catch (error) {
+        console.log(error);  // Log the error
+        return null;  // Return null if any error occurs, so the controller can handle it
+    }
+};

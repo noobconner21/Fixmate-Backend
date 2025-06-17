@@ -198,6 +198,31 @@ This endpoint is used for update user profile.
 
   ```
 
+  ### 5. **Fetch all post via userid** (`GET /api/v1/post/get-posts/:user_id`)
+
+This endpoint is used for fetch all the posts that user posts.
+#### ⚙️ Request Format:
+- **Method**: `GET`
+- **Endpoint**: `/api/v1/post/get-posts/:user_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "Post fetched",
+    "success": true,
+    "data": []
+  }
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "User cannot find"
+  }
+
+
 
 
 
