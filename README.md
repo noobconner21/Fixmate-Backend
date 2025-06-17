@@ -94,7 +94,10 @@ This endpoint is used for fetch user profile info and all the posts in database.
                     "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187184/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187183623.jpg"
                 ],
                 "author_name": {
-                    "author_name": "dumi"
+                    "user_name": "dumi"
+                },
+                "author_profile_pic": {
+                    "profile_pic": "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187180/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187178033.jpg"
                 }
             },
             {
@@ -111,6 +114,9 @@ This endpoint is used for fetch user profile info and all the posts in database.
                 ],
                 "author_name": {
                     "user_name": "shay"
+                },
+                "author_profile_pic": {
+                    "profile_pic": ""
                 }
             }
         ]
