@@ -108,7 +108,7 @@ This endpoint is used for fetch user profile info and all the posts in database.
 
   ```
 
-  ### 2. **Update user profile** (`PUT /api/v1/user/update-profile`)
+### 2. **Update user profile** (`PUT /api/v1/user/update-profile`)
 
 This endpoint is used for update user profile.
 #### ⚙️ Request Format:
@@ -120,7 +120,7 @@ This endpoint is used for update user profile.
   - **Required Fields**:
   ```json
   {
-    "image": `form-field>`,  // Form field
+    "image": `<form-field>`,  // Form field
     "user_id": "FE4oxPgWwio<u%E", // Firebase user ID (Valid ID)
     "name": "yourname"  // Updated name
   }
