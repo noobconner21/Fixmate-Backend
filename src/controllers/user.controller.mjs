@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import { user_register_service } from "../services/user.service.mjs";
+import { fetch_user_info_and_posts, user_register_service } from "../services/user.service.mjs";
+import { SendResponse } from "../responses/SuccussResponse.mjs";
 
 
 //User register controller
@@ -21,3 +22,18 @@ export const user_register_controller = async (req, res, next) => {
         return next(error); 
     }
 };
+
+//Get userprofile info and all posts when dashboard loads
+export const get_user_profile_posts_controller = async (req,res,next) => {
+    try {
+        const {id} = req.params;
+        console.log(id);
+        
+        const data = await fetch_user_info_and_posts(id,next);
+        if (data) {
+            return SendResponse("Succuss",StatusCodes.OK,data,res)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
