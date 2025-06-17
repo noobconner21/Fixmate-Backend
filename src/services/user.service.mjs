@@ -1,7 +1,9 @@
 import { StatusCodes } from "http-status-codes";
 import superbase from "../database/connect.mjs";
 import { system_error, user_error } from "../responses/ErrorResponse.mjs";
+import { get_all_posts } from "./post.service.mjs";
 
+//User registration service
 export const user_register_service = async (user_id, name, email, next) => {
     try {
         //Check user existance
@@ -21,3 +23,25 @@ export const user_register_service = async (user_id, name, email, next) => {
         return next(new system_error(error.message,StatusCodes.INTERNAL_SERVER_ERROR))
     } 
 };
+
+//Fetch user information
+export const fetch_user_info_and_posts = async (user_id,next) => {
+    try {
+        const {data:UserData,error:UserDataError} = await superbase.from("users").select("*").eq("user_id",user_id).single()
+        if (UserDataError) {
+            console.log(UserDataError);
+        }
+        //Getting all post information
+        const posts = await get_all_posts(next);
+        if (!posts || !UserData) {
+            return next(new system_error("Error fetching data"),StatusCodes.INTERNAL_SERVER_ERROR)
+        }
+        return {
+            user:UserData,
+            posts
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    
+}

@@ -1,6 +1,8 @@
 import { StatusCodes } from "http-status-codes";
 import { user_register_service } from "../services/user.service.mjs";
 
+
+//User register controller
 export const user_register_controller = async (req, res, next) => {
     try {
         const { user_id, name, email } = req.body;
