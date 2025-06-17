@@ -19,13 +19,13 @@ For all requests, include the following header:
 
 ## 🛠️ Endpoints
 
-### 1. **User Registration** (`POST /api/v1/register`)
+### 1. **User Registration** (`POST /api/v1/auth/register`)
 
 This endpoint is used for registering a new user in the system. It requires specific fields to be sent in the request body.
 
 #### ⚙️ Request Format:
 - **Method**: `POST`
-- **Endpoint**: `/api/v1/register`
+- **Endpoint**: `/api/v1/auth/register`
 - **Required Headers**:
   - `x-api-key: <your-valid-api-key>`
 - **Required Fields**:
