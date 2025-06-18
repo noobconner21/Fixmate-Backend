@@ -341,6 +341,75 @@ This endpoint is used for update user profile.
 
 
 
+### 9. **Add new comment to the post** (`POST /api/v1/comment/:post_id`)
+
+This endpoint is used for adding new comment to a post
+#### ⚙️ Request Format:
+- **Method**: `POST`
+- **Endpoint**: `/api/v1/comment/:post_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+  
+  - **Required Fields**:
+  ```json
+  {
+    "commentor_id": "FE4oxPgWwio<u%E", // Retrived firebase id current user logged in 
+    "comment_content": "nice post btw",  // Comment content
+  }
+  ```
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "Comment added!",
+    "success": true,
+    "data": {}
+  }
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "Invalid user id"
+  }
+
+  ```
+
+### 10. **Get all comments related to a post** (`GET /api/v1/comment/:post_id`)
+
+This endpoint is used for adding new comment to a post
+#### ⚙️ Request Format:
+- **Method**: `GET`
+- **Endpoint**: `/api/v1/comment/:post_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+  
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "Fetched succuss",
+    "success": true,
+    "data": [
+        {
+            "commentor_name": "dumi",
+            "commentor_profile_pic": "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187180/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187178033.jpg",
+            "comment_id": "c65c2207-3bc1-4203-a5bb-bebb70ed45ad",
+            "comment": "new comment"
+        }
+    ]
+  }
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "Invalid post id"
+  }
+
+  ```
+
+
 
 
 
