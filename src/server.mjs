@@ -5,6 +5,7 @@ import auth_router from "./routes/auth.route.mjs"
 import { GlobalMiddleware } from "./middlewares/GlobalMiddleware.mjs"
 import user_router from "./routes/user.route.mjs"
 import post_router from "./routes/post.route.mjs"
+import comment_router from "./routes/comments.route.mjs"
 
 
 
@@ -20,6 +21,7 @@ app.use(express.json())
 app.use("/api/v1/auth",auth_router)
 app.use("/api/v1/user",user_router)
 app.use("/api/v1/post",post_router)
+app.use("/api/v1/comment",comment_router)
 app.use(GlobalMiddleware)
 
 app.listen(ENV.PORT,()=>{

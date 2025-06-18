@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import { SendResponse } from "../responses/SuccussResponse.mjs";
 import { user_error } from "../responses/ErrorResponse.mjs";
-import { get_user_profile_service } from "../services/user.service.mjs";
+import { get_user_profile_service, user_register_service } from "../services/user.service.mjs";
 
 
 //User register controller
