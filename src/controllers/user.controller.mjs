@@ -1,6 +1,8 @@
 import { StatusCodes } from "http-status-codes";
 import { fetch_user_info_and_posts, user_register_service } from "../services/user.service.mjs";
 import { SendResponse } from "../responses/SuccussResponse.mjs";
+import { get_all_posts_service } from "../services/post.service.mjs";
+import { user_error } from "../responses/ErrorResponse.mjs";
 
 
 //User register controller
@@ -40,3 +42,5 @@ export const get_user_profile_posts_controller = async (req,res,next) => {
         console.log(error);
     }
 }
+
+

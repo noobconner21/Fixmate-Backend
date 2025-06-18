@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes"
 import { user_error } from "../responses/ErrorResponse.mjs";
-import { create_post_service,get_posts_service } from "../services/post.service.mjs";
+import { create_post_service,delete_post_service,get_all_posts_service,get_posts_service } from "../services/post.service.mjs";
 import { SendResponse } from "../responses/SuccussResponse.mjs";
 
 
@@ -43,3 +43,37 @@ export const get_posts_via_admin_id = async (req, res, next) => {
         return next(error); 
     }
 };
+
+//Delete post
+
+export const delete_post_controller = async (req,res,next) => {
+    try {
+        const {post_id} = req.params;
+        const response = await delete_post_service(post_id)
+        
+        if (!response.succuss) {
+            return next(new user_error(response.msg,StatusCodes.BAD_REQUEST))
+        }
+
+        return SendResponse(response.msg,StatusCodes.OK,{},res)
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//Get all the posts
+export const get_all_posts_controller =async (req,res,next) => {
+    try {
+        const response = await get_all_posts_service()
+        if (!response.succuss) {
+            return next(new user_error(response.msg,StatusCodes.BAD_REQUEST))
+        }
+        if (response.succuss) {
+            return SendResponse(response.msg,StatusCodes.OK,response?.data,res)
+        }
+    } catch (error) {
+      console.log(error);
+        
+    }
+}

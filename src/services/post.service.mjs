@@ -1,11 +1,10 @@
 //fetch all the posts
 
-import { StatusCodes } from "http-status-codes";
+import { getStatusCode, StatusCodes } from "http-status-codes";
 import superbase from "../database/connect.mjs";
 import { system_error, user_error } from "../responses/ErrorResponse.mjs";
 import { upload_profile_pic } from "../utils/cloudinary.mjs";
 
-import { SendResponse } from "../responses/SuccussResponse.mjs";
 
 
 
@@ -98,3 +97,44 @@ export const get_posts_service = async (admin_id, next) => {
         return null;  // Return null if any error occurs, so the controller can handle it
     }
 };
+
+
+//Delete post
+export const delete_post_service = async (post_id) => {
+    try {
+
+        const {data:delete_post,error:deletederror} = await superbase.from("posts").delete().eq("post_id",post_id).select();
+        console.log("delete",delete_post);
+        if (delete_post.length == 0) {
+            return {"succuss":false,"msg":"Cant find post"}
+        }
+        if (deletederror) {
+            console.log(deletederror);
+            
+            throw new system_error(deletederror.details,getStatusCode.INTERNAL_SERVER_ERROR)
+        }
+        console.log(delete_post);
+        return {"succuss":true,"msg":"Post deleted"}
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
+//Get all the posts in database
+export const get_all_posts_service = async () => {
+    try {
+        const {data:posts,error:postError} = await superbase.from("posts").select("*")
+        if (!posts || posts.length == 0) {
+            return {"succuss":false,"msg":"Posts not found"}
+        }
+        if (postError) {
+            throw new system_error(PostgresError.details,StatusCodes.INTERNAL_SERVER_ERROR)
+        }
+        return {"succuss":true,"msg":"Post fetched","data":posts}
+
+    } catch (error) {
+        throw error
+    }
+}

@@ -58,69 +58,34 @@ This endpoint is used for registering a new user in the system. It requires spec
 
   ```
 
-### 2. **User profile and all posts fetch** (`GET /api/v1/user/:id`)
+### 2. **Get all the posts** (`GET /api/v1/post/`)
 
-This endpoint is used for fetch user profile info and all the posts in database.
+This endpoint is used for fetch all the posts in database.
 #### ⚙️ Request Format:
 - **Method**: `GET`
-- **Endpoint**: `/api/v1/user`
+- **Endpoint**: `/api/v1/post/`
 - **Required Headers**:
   - `x-api-key: <your-valid-api-key>`
 
 - **✅ Success Response (200 OK)**:
   ```json
   {
-    "message": "Succuss",
+    "message": "Post fetched",
     "success": true,
-    "data": {
-        "user": {
-            "user_id": "O1JNcBcCamWypk8J5vdjGUQUYti2",
-            "user_name": "shay",
-            "user_email": "shay@gmail.com",
-            "created_at": "2025-06-17T19:08:04.736236",
-            "profile_pic": ""
-        },
-        "posts": [
-            {
-                "post_id": "a89506ed-2012-4d48-bee9-5cdd9ff00f7a",
-                "post_title": "Ram not",
-                "post_description": "Ram not",
-                "post_comment_count": 0,
-                "post_react": 0,
-                "post_author_id": "4xEmXvn4GHdWvZEosx6NoTkz2F12",
-                "post_images": [
-                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187180/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187178033.jpg",
-                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187182/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187181819.jpg",
-                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187184/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187183623.jpg"
-                ],
-                "author_name": {
-                    "user_name": "dumi"
-                },
-                "author_profile_pic": {
-                    "profile_pic": "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187180/post_images/post_images/4xEmXvn4GHdWvZEosx6NoTkz2F12/1750187178033.jpg"
-                }
-            },
-            {
-                "post_id": "1cbee2c9-96a3-4618-8cb2-54c56f19df06",
-                "post_title": "wwwwww",
-                "post_description": "Ram notkjghgh",
-                "post_comment_count": 21,
-                "post_react": 256,
-                "post_author_id": "O1JNcBcCamWypk8J5vdjGUQUYti2",
-                "post_images": [
-                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187327/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187325381.jpg",
-                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187329/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187328861.jpg",
-                    "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750187330/post_images/post_images/O1JNcBcCamWypk8J5vdjGUQUYti2/1750187330242.jpg"
-                ],
-                "author_name": {
-                    "user_name": "shay"
-                },
-                "author_profile_pic": {
-                    "profile_pic": ""
-                }
-            }
-        ]
-    }
+    "data": [
+        {
+            "post_id": "5280803c-5993-4a50-ae15-882f61804146",
+            "created_at": "2025-06-18T06:24:38.542163+00:00",
+            "post_title": "wwwwww",
+            "post_description": "Ram notkjghgh",
+            "post_comment_count": 0,
+            "post_react": 0,
+            "post_author_id": "lakasdasdssadhan",
+            "post_images": [
+                "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750227877/post_images/post_images/lakasdasdssadhan/1750227877080.png"
+            ]
+        }
+    ]
   }
 
   ```
@@ -128,8 +93,8 @@ This endpoint is used for fetch user profile info and all the posts in database.
 - **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
   ```json
   {
-    "succuss": false,
-    "message": "Invalid user id"
+    "success": false,
+    "message": "Post not found"
   }
 
   ```
