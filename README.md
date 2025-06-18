@@ -302,6 +302,44 @@ This endpoint is used for DELETE specific post by post id.
 
 
 
+### 7. **Updadte a post** (`PUT /api/v1/post/update/:post_id`)
+
+This endpoint is used for update user profile.
+#### ⚙️ Request Format:
+- **Method**: `POST`
+- **Endpoint**: `/api/v1/post/update/:post_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+  
+  - **Required Fields**:
+  ```json
+  {
+    "title": "Blue screen issue windows 10",  // Post title
+    "description": "A Blue Screen of Death (BSOD) in Windows indicates a critical error that the system cannot recover from, causing the computer to restart abruptly to prevent data loss or hardware damage",  // Post Description
+  }
+  ```
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "Post updated",
+    "success": true,
+    "data": {}
+  }
+
+  ```
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "Something went wrong went updating posts"
+  }
+
+  ```
+
+
+
 
 
 

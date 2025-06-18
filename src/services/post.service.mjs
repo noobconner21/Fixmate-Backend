@@ -46,7 +46,6 @@ export const create_post_service = async (images,folder,user_id,title,descriptio
 
 
 //Get posts via admin id
-// Get posts via admin id
 export const get_posts_service = async (admin_id, next) => {
     try {
         const {data: existsUser, error: userExistsError} = await superbase.from("users").select("user_id").eq("user_id", admin_id).single();
@@ -119,6 +118,23 @@ export const get_all_posts_service = async () => {
         }
         return {"succuss":true,"msg":"Post fetched","data":posts}
 
+    } catch (error) {
+        throw error
+    }
+}
+
+
+//update_post
+export const update_post_service = async (post_id,post_data) => {
+    try {
+        const {data:updatePost , error:updatePostError} = await superbase.from("posts").update(post_data).eq("post_id",post_id).select().single()
+        if (!updatePost) {
+            return {"succuss":false,"msg":"Something went wrong went updating posts"}
+        }
+        if (updatePostError) {
+            throw new system_error(updatePostError.details,StatusCodes.INTERNAL_SERVER_ERROR)
+        }
+        return {"succuss":true,"msg":"Post updated"}
     } catch (error) {
         throw error
     }

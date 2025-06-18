@@ -1,7 +1,8 @@
 import { StatusCodes } from "http-status-codes"
-import { user_error } from "../responses/ErrorResponse.mjs";
-import { create_post_service,delete_post_service,get_all_posts_service,get_posts_service } from "../services/post.service.mjs";
+import { system_error, user_error } from "../responses/ErrorResponse.mjs";
+import { create_post_service,delete_post_service,get_all_posts_service,get_posts_service, update_post_service } from "../services/post.service.mjs";
 import { SendResponse } from "../responses/SuccussResponse.mjs";
+
 
 
 //create post
@@ -75,5 +76,23 @@ export const get_all_posts_controller =async (req,res,next) => {
     } catch (error) {
       console.log(error);
         
+    }
+}
+
+
+//Update post
+export const update_post_controller = async (req,res,next) => {
+    try {
+        const {title,description} = req.body
+        if (!title || !description) {
+            return next(new user_error("All fields are required"))
+        }
+        const response  = await update_post_service(req.params.post_id,{"post_title":title,"post_description":description})
+        if (!response.succuss) {
+            return next(new user_error(response.msg,StatusCodes.BAD_REQUEST))
+        }
+        return SendResponse(response.msg,StatusCodes.ACCEPTED,{},res)
+    } catch (error) {
+        return next(new system_error(error.message,StatusCodes.INTERNAL_SERVER_ERROR))
     }
 }
