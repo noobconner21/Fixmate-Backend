@@ -1,7 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import superbase from "../database/connect.mjs";
 import { system_error, user_error } from "../responses/ErrorResponse.mjs";
-import { get_all_posts } from "./post.service.mjs";
 import { upload_profile_pic } from "../utils/cloudinary.mjs";
 
 //User registration service
@@ -25,33 +24,21 @@ export const user_register_service = async (user_id, name, email, next) => {
     } 
 };
 
-//Fetch user information
-export const fetch_user_info_and_posts = async (user_id,next) => {
+//Fetch user profile
+
+export const get_user_profile_service = async (user_id) => {
     try {
-        const {data:UserData,error:UserDataError} = await superbase.from("users").select("*").eq("user_id",user_id).single()
-        
-        if (!UserData) {
-            return next(new user_error("Invalid user id",StatusCodes.BAD_REQUEST))
+        const {data:User,error:UserError} = await superbase.from("users").select("*").eq("user_id",user_id).single()
+        if (!User) {
+            return {"succuss":false,"msg":"user cannot find"}
         }
-        
-        if (UserDataError) {
-            return next(new system_error(UserDataError.details,StatusCodes.BAD_REQUEST))
+        if (UserError) {
+            throw new system_error(UserError.details,StatusCodes.INTERNAL_SERVER_ERROR)
         }
-  
-              
-        //Getting all post information
-        const posts = await get_all_posts(next);
-        if (!posts || !UserData) {
-            return next(new system_error("Error fetching data",StatusCodes.INTERNAL_SERVER_ERROR))
-        }
-        return {
-            user:UserData,
-            posts
-        }
+        return {"succuss":true,"msg":"User fetched","data":User}
     } catch (error) {
-        return next(error.message,StatusCodes.BAD_REQUEST)
+        throw error
     }
-    
 }
 
 //Update profile

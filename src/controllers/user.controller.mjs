@@ -1,8 +1,7 @@
 import { StatusCodes } from "http-status-codes";
-import { fetch_user_info_and_posts, user_register_service } from "../services/user.service.mjs";
 import { SendResponse } from "../responses/SuccussResponse.mjs";
-import { get_all_posts_service } from "../services/post.service.mjs";
 import { user_error } from "../responses/ErrorResponse.mjs";
+import { get_user_profile_service } from "../services/user.service.mjs";
 
 
 //User register controller
@@ -28,18 +27,21 @@ export const user_register_controller = async (req, res, next) => {
     }
 };
 
-//Get userprofile info and all posts when dashboard loads
-export const get_user_profile_posts_controller = async (req,res,next) => {
+
+//Get user profile
+export const get_user_profile_controllere = async (req,res,next) => {
     try {
-        const {id} = req.params;
-        console.log(id);
-        
-        const data = await fetch_user_info_and_posts(id,next);
-        if (data) {
-            return SendResponse("Succuss",StatusCodes.OK,data,res)
+        const {user_id} = req.params;
+        const response = await get_user_profile_service(user_id)
+        if (!response.succuss) {
+            return next(new user_error(response.msg,StatusCodes.BAD_REQUEST))
+        }
+        if (response.succuss) {
+            return SendResponse(response.msg,StatusCodes.OK,response.data,res)
         }
     } catch (error) {
         console.log(error);
+        
     }
 }
 

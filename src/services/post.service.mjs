@@ -8,31 +8,6 @@ import { upload_profile_pic } from "../utils/cloudinary.mjs";
 
 
 
-//Feed for all users
-export const get_all_posts = async (user_id,next) => {
-    try {
-        const {data:Posts , error:DataFetchError} = await superbase.from("posts").select(`
-        post_id, 
-        post_title, 
-        post_description, 
-        post_comment_count, 
-        post_react, 
-        post_author_id, 
-        post_images, 
-        author_name:users!posts_post_author_id_fkey(user_name),
-        author_profile_pic:users!posts_post_author_id_fkey(profile_pic)
-      `)
-        if (DataFetchError) {
-            console.log(DataFetchError);
-        }
-        return Posts        
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-
-
 
 //Create post
 
@@ -125,7 +100,17 @@ export const delete_post_service = async (post_id) => {
 //Get all the posts in database
 export const get_all_posts_service = async () => {
     try {
-        const {data:posts,error:postError} = await superbase.from("posts").select("*")
+        const {data:posts,error:postError} = await superbase.from("posts").select(`
+        post_id, 
+        post_title, 
+        post_description, 
+        post_comment_count, 
+        post_react, 
+        post_author_id, 
+        post_images, 
+        author_name:users!posts_post_author_id_fkey(user_name),
+        author_profile_pic:users!posts_post_author_id_fkey(profile_pic)
+      `)
         if (!posts || posts.length == 0) {
             return {"succuss":false,"msg":"Posts not found"}
         }

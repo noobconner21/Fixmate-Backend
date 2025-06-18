@@ -75,7 +75,6 @@ This endpoint is used for fetch all the posts in database.
     "data": [
         {
             "post_id": "5280803c-5993-4a50-ae15-882f61804146",
-            "created_at": "2025-06-18T06:24:38.542163+00:00",
             "post_title": "wwwwww",
             "post_description": "Ram notkjghgh",
             "post_comment_count": 0,
@@ -83,7 +82,30 @@ This endpoint is used for fetch all the posts in database.
             "post_author_id": "lakasdasdssadhan",
             "post_images": [
                 "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750227877/post_images/post_images/lakasdasdssadhan/1750227877080.png"
-            ]
+            ],
+            "author_name": {
+                "user_name": "yournamsade"
+            },
+            "author_profile_pic": {
+                "profile_pic": ""
+            }
+        },
+        {
+            "post_id": "8edfaadb-930a-41b0-b899-a9478dcebf18",
+            "post_title": "wwwwww",
+            "post_description": "Ram notkjghgh",
+            "post_comment_count": 0,
+            "post_react": 0,
+            "post_author_id": "lakasdasdssadhan",
+            "post_images": [
+                "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750228657/post_images/post_images/lakasdasdssadhan/1750228656185.png"
+            ],
+            "author_name": {
+                "user_name": "yournamsade"
+            },
+            "author_profile_pic": {
+                "profile_pic": ""
+            }
         }
     ]
   }
@@ -99,7 +121,42 @@ This endpoint is used for fetch all the posts in database.
 
   ```
 
-### 3. **Update user profile** (`PUT /api/v1/user/update-profile`)
+
+### 3. **Get User profile info** (`GET /api/v1/user/profile/:user_id`)
+
+This endpoint is used for fetch user profile
+#### ⚙️ Request Format:
+- **Method**: `GET`
+- **Endpoint**: `/api/v1/user/profile/:user_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "User fetched",
+    "success": true,
+    "data": {
+        "user_id": "lakasdasdssadhan",
+        "user_name": "yournamsade",
+        "user_email": "yourasdsadnaasdme@asdname.com",
+        "created_at": "2025-06-17T20:45:14.743882",
+        "profile_pic": ""
+    }
+  }
+
+  ```
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "user cannot find"
+  }
+
+  ```
+
+### 4. **Update user profile** (`PUT /api/v1/user/update-profile`)
 
 This endpoint is used for update user profile.
 #### ⚙️ Request Format:
@@ -142,7 +199,7 @@ This endpoint is used for update user profile.
 
   ```
 
-### 4. **Create new post** (`POST /api/v1/post/create`)
+### 5. **Create new post** (`POST /api/v1/post/create`)
 
 This endpoint is used for update user profile.
 #### ⚙️ Request Format:
@@ -189,7 +246,7 @@ This endpoint is used for update user profile.
 
   ```
 
-### 5. **Fetch all post via userid** (`GET /api/v1/post/get-posts/:user_id`)
+### 6. **Fetch all post via userid** (`GET /api/v1/post/get-posts/:user_id`)
 
 This endpoint is used for fetch all the posts that user posts.
 #### ⚙️ Request Format:
@@ -212,6 +269,33 @@ This endpoint is used for fetch all the posts that user posts.
     "message": "Cannot find posts related to this user",
     "success": true,
     "data": null
+  }
+
+  ```
+
+
+### 6. **Delete post** (`DELETE /api/v1/post/delete-post/:post_id`)
+
+This endpoint is used for DELETE specific post by post id.
+#### ⚙️ Request Format:
+- **Method**: `DELETE`
+- **Endpoint**: `/api/v1/post/delete-post/:post_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "message": "Post deleted",
+    "success": true,
+    "data": {}
+  }
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "Cant find post"
   }
 
   ```
