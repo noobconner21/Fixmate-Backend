@@ -96,6 +96,11 @@ export const delete_post_service = async (post_id) => {
 
 
 
+
+
+
+
+
 //Get all the posts in database
 export const get_all_posts_service = async () => {
     try {
