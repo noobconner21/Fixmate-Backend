@@ -112,6 +112,7 @@ export const get_all_posts_service = async () => {
         post_react, 
         post_author_id, 
         post_images, 
+        created_at,
         author_name:users!posts_post_author_id_fkey(user_name),
         author_profile_pic:users!posts_post_author_id_fkey(profile_pic)
       `)

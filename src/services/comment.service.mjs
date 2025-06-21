@@ -37,6 +37,9 @@ export const create_comment_service = async (post_id,commentor_id,comment_conten
         if (!Post) {
             return {"status":false,"msg":"Invalid post id"}
         }
+        console.log(Post);
+        console.log(PostError);
+        
         //check commentor id is valid user id
         const {data:User,error:UserError} = await superbase.from("users").select("profile_pic","user_name").eq("user_id",commentor_id).select().single()
         
@@ -55,6 +58,8 @@ export const create_comment_service = async (post_id,commentor_id,comment_conten
         }).select().single()
         //return respons
         if (!comment || commentError) {
+            console.log(commentError);
+            
             throw new system_error("Something went wrong when creating comment",StatusCodes.INTERNAL_SERVER_ERROR)
         }
 
@@ -69,4 +74,28 @@ export const create_comment_service = async (post_id,commentor_id,comment_conten
     } catch (error) {        
         throw error
     }
+}
+
+
+//Create notification 
+
+export const create_notification = async (post_id,commentor_id,comment_content)=>{
+    try {
+        const {data:postOwner,error:PostOwnerError} = await superbase.from("posts").select("post_author_id").eq("post_id",post_id)
+        if (!postOwner || PostOwnerError) {
+            throw new system_error("Something went wrong when creating notification",StatusCodes.INTERNAL_SERVER_ERROR)
+        }
+
+        const {data:Notify,error:NotifyError} = await superbase.from("notification").insert({"related_post_id":post_id,"from_who":commentor_id,"isRead":false}).select().single()
+        console.log(Notify);
+        console.log(NotifyError);
+        
+        
+        
+    } catch (error) {
+        console.log(error);
+        
+        throw error
+    }
+
 }
