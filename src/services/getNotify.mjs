@@ -29,9 +29,7 @@ export const getNotifyServic = async (admin_id) => {
         const FormatedNotify = Notifications.map((notification) => {
             return {
                 notification_id: notification.notification_id,
-                created_at: notification.created_at,
-                post_title: notification.posts.post_title,
-                commentor_name: notification.users.user_name,
+                content:`${notification.users.user_name} commented on your post: ${notification.posts.post_title}`,
                 commentor_profile_pic: notification.users.profile_pic
             }
         })
