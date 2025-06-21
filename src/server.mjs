@@ -24,6 +24,8 @@ app.use("/api/v1/post",post_router)
 app.use("/api/v1/comment",comment_router)
 app.use(GlobalMiddleware)
 
+
+
 app.listen(ENV.PORT,()=>{
     console.log(`Server is running🔥 on http://localhost:${ENV.PORT}`);
 })
