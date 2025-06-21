@@ -411,6 +411,50 @@ This endpoint is used for adding new comment to a post
 
 
 
+### 10. **Get all notifications related to a user** (`GET /api/v1/notify/:user_id`)
+
+This endpoint is used for fetching all user notifications
+#### ⚙️ Request Format:
+- **Method**: `GET`
+- **Endpoint**: `/api/v1/notify/:user_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+  
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "status": "success",
+    "message": "Notifications fetched successfully",
+    "data": [
+        {
+            "notification_id": "787cedba-22b9-4e0b-aff8-779444ed6314",
+            "created_at": "2025-06-21T19:55:24.319725+00:00",
+            "post_title": "Post1",
+            "commentor_name": "lakshan",
+            "commentor_profile_pic": ""
+        },
+        {
+            "notification_id": "27088927-bbfb-4864-80ce-01c3c52e257a",
+            "created_at": "2025-06-21T19:54:28.135743+00:00",
+            "post_title": "Post1",
+            "commentor_name": "Rajapaksha",
+            "commentor_profile_pic": "http://res.cloudinary.com/ddrglwmsx/image/upload/v1750535329/profilepic/profilepic/veRoQVzyLOZmTZhd5nps9Ihi02W2/1750535328599.jpg"
+        }
+    ]
+  }
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "success": false,
+    "message": "Post id required"
+  }
+
+  ```
+
+
+
 
 
 

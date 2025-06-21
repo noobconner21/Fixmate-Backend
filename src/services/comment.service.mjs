@@ -81,14 +81,22 @@ export const create_comment_service = async (post_id,commentor_id,comment_conten
 
 export const create_notification = async (post_id,commentor_id,comment_content)=>{
     try {
+
+
+
         const {data:postOwner,error:PostOwnerError} = await superbase.from("posts").select("post_author_id").eq("post_id",post_id)
         if (!postOwner || PostOwnerError) {
             throw new system_error("Something went wrong when creating notification",StatusCodes.INTERNAL_SERVER_ERROR)
         }
 
-        const {data:Notify,error:NotifyError} = await superbase.from("notification").insert({"related_post_id":post_id,"from_who":commentor_id,"isRead":false}).select().single()
-        console.log(Notify);
-        console.log(NotifyError);
+        console.log("post owner",postOwner[0].post_author_id);
+        
+        
+     
+
+        const {data:Notify,error:NotifyError} = await superbase.from("notification").insert({"related_post_id":post_id,"from_who":commentor_id,"isRead":false,"post_author_id":postOwner[0].post_author_id}).select().single()
+        // console.log(Notify);
+        // console.log(NotifyError);
         
         
         
