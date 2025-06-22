@@ -45,3 +45,24 @@ export const getNotifyServic = async (admin_id) => {
         throw error
     }
 }
+
+export const NotifyMarkAsReadService = async (notif_id) => {
+    try {
+        const {data:Notify,error:NotifyError} =await superbase.from("notification").update({"isRead":true}).eq("notification_id",notif_id).select().single()
+        if (!Notify || NotifyError) {
+            return {
+                status: 404,
+                message: "Notification not found or error marking as read",
+                error: NotifyError
+            }
+        }
+        return {
+            status: 200,
+            message: "Notification marked as read successfully",
+            data: Notify
+        }
+        
+    } catch (error) {
+        return error
+    }
+}

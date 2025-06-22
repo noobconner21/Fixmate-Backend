@@ -454,6 +454,48 @@ This endpoint is used for fetching all user notifications
   ```
 
 
+  
+### 10. **Read notifications (Mark as read)** (`GET /api/v1/notify/read/:notify_id`)
+
+This endpoint is used for fetching all user notifications
+#### ⚙️ Request Format:
+- **Method**: `GET`
+- **Endpoint**: `/api/v1/notify/read/:notify_id`
+- **Required Headers**:
+  - `x-api-key: <your-valid-api-key>`
+  
+
+- **✅ Success Response (200 OK)**:
+  ```json
+  {
+    "status": "success",
+    "message": "Notification marked as read successfully",
+    "data": {
+        "notification_id": "2584eecb-851e-40e1-a4f1-01eade6a8515",
+        "related_post_id": "d21c83ca-ce37-4e73-b767-a6b00ecedd7c",
+        "from_who": "S8JBK5BxlTXGskwfClgDld5yW3q1",
+        "isRead": true,
+        "created_at": "2025-06-21T20:59:02.696773+00:00",
+        "post_author_id": null
+    }
+  }
+
+- **❌ Error Response (400 Bad Request / 500 Internal Server Error)**
+  ```json
+  {
+    "status": "error",
+    "message": "Notification not found or error marking as read",
+    "error": {
+        "code": "22P02",
+        "details": null,
+        "hint": null,
+        "message": "invalid input syntax for type uuid: \"2584eecb-851e-40e1-a4f1-01eade6a8515s\""
+    }
+  }
+
+  ```
+
+
 
 
 
