@@ -13,6 +13,6 @@ const user_router = Router()
 user_router.get("/profile/:user_id",CheckApiKey,get_user_profile_controllere)
 
 //Update profile information
-user_router.post("/update-profile",CheckApiKey,upload.array('images',1),update_profile)
+user_router.post("/update-profile",CheckApiKey,upload.array('image',1),update_profile)
 
 export default user_router;
